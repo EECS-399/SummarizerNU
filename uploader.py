@@ -9,4 +9,8 @@ auth = tweepy.OAuthHandler(creds['CONSUMER_KEY'], creds['CONSUMER_SECRET'])
 auth.set_access_token(creds['ACCESS_TOKEN'], creds['ACCESS_SECRET'])
 
 api = tweepy.API(auth)
-api.update_status("This is an automated Tweet created in Python and called from Terminal")
+
+with open('tweets.csv','rb') as csvfile:
+    tweets = csv.reader(csvfile, delimiter=' ', quotechar='|')
+    for row in tweets:
+        api.update_status(' '.join(row))
