@@ -9,4 +9,7 @@ auth = tweepy.OAuthHandler(creds['CONSUMER_KEY'], creds['CONSUMER_SECRET'])
 auth.set_access_token(creds['ACCESS_TOKEN'], creds['ACCESS_SECRET'])
 
 api = tweepy.API(auth)
-api.update_status("This is an automated Tweet created in Python and called from Terminal")
+
+
+for i in range(1,20):
+    api.update_status("This is automated Tweet #" + str(i));
